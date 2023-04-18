@@ -3,43 +3,26 @@ namespace Formapro\Values;
 
 trait ValuesTrait
 {
-    /**
-     * @var array
-     */
     protected $values = [];
 
-    /**
-     * @var callable[]
-     */
-    protected $hookId = [];
-
-    /**
-     * @param string $key
-     * @param string|int|null|array $value
-     */
-    protected function addValue($key, $value)
+    protected function addValue(string $key, $value): void
     {
         add_value($this, $key, $value);
     }
 
-    /**
-     * @param string $key
-     * @param string|int|null|array $value
-     */
-    protected function setValue($key, $value)
+    protected function setValue(string $key, $value): void
     {
         set_value($this, $key, $value);
     }
 
-    /**
-     * @param string $key
-     * @param mixed  $default
-     * @param string|int|null|array $castTo
-     *
-     * @return mixed
-     */
-    protected function getValue($key, $default = null, $castTo = null)
+    protected function getValue(string $key, $default = null)
     {
-        return get_value($this, $key, $default, $castTo);
+        $castTo = null;
+        $args = func_get_args();
+        if (3 == count($args)) {
+            return get_value($this, $key, $default, $args[2]);
+        }
+
+        return get_value($this, $key, $default);
     }
 }

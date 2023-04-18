@@ -1,7 +1,6 @@
 <?php
 namespace Formapro\Values\Tests;
 
-use function Formapro\Values\get_object_changed_values;
 use function Formapro\Values\get_values;
 use Formapro\Values\Tests\Model\CastableObject;
 use PHPUnit\Framework\TestCase;
@@ -115,7 +114,6 @@ class CastTraitTest extends TestCase
 
         self::assertSame([$expectedValue], $obj->getValue('aNamespace.aKey'));
         self::assertSame(['aNamespace' => ['aKey' => [$expectedValue]]], get_values($obj));
-        self::assertSame(['aNamespace' => ['aKey' => [$expectedValue]]], get_object_changed_values($obj));
     }
 
     public function testShouldAllowAddDateIntervalValueToArray()

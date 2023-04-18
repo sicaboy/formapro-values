@@ -1,7 +1,7 @@
 <?php
 namespace Formapro\Values;
 
-function &array_get($key, $default, &$values)
+function &array_get(string $key, $default, array &$values)
 {
     if (false == preg_match('/([\d\w]*)\.?/', $key)) {
         throw new \LogicException(sprintf('The key must contain only a-Z0-9 and "." symbols. Got "%s"', $key));
@@ -28,7 +28,7 @@ function &array_get($key, $default, &$values)
  *
  * @return bool return true if a modification to data was done, false if nothing is changed
  */
-function array_set($key, $value, array &$values)
+function array_set(string $key, $value, array &$values): bool
 {
     $keys = explode('.', $key);
 
@@ -37,7 +37,7 @@ function array_set($key, $value, array &$values)
     return true;
 }
 
-function array_has($key, array &$values)
+function array_has(string $key, array &$values): bool
 {
     if (false == preg_match('/([\d\w]*)\.?/', $key)) {
         throw new \LogicException(sprintf('The key must contain only a-Z0-9 and "." symbols. Got "%s', $key));
@@ -57,7 +57,7 @@ function array_has($key, array &$values)
  *
  * @return bool Returns true if data was changed, false if it is unchanged.
  */
-function array_unset($key, array &$values)
+function array_unset(string $key, array &$values): bool
 {
     if (false == preg_match('/([\d\w]*)\.?/', $key)) {
         throw new \LogicException(sprintf('The key must contain only a-Z0-9 and "." symbols. Got "%s', $key));
@@ -72,7 +72,7 @@ function array_unset($key, array &$values)
     return $result;
 }
 
-function array_copy(array $array)
+function array_copy(array $array): array
 {
     // values array may contain sub array passed as a reference to a sub object.
     // this code removes such refs from the array.
@@ -98,7 +98,7 @@ function array_copy(array $array)
 /**
  * @see https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Component%21Utility%21NestedArray.php/function/NestedArray%3A%3AsetValue/8
  */
-function array_path_set(array &$array, array $keys, $value, $force = false) {
+function array_path_set(array &$array, array $keys, $value, bool $force = false) {
     $ref = &$array;
     foreach ($keys as $parent) {
         // PHP auto-creates container arrays and NULL entries without error if $ref

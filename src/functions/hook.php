@@ -6,7 +6,7 @@ namespace Formapro\Values;
  * @param string        $hook
  * @param \Closure      $callback
  */
-function register_hook($objectOrClass, $hook, \Closure $callback)
+function register_hook($objectOrClass, $hook, \Closure $callback): void
 {
     HookStorage::register($objectOrClass, $hook, $callback);
 }
@@ -15,7 +15,7 @@ function register_hook($objectOrClass, $hook, \Closure $callback)
  * @param string        $hook
  * @param \Closure      $callback
  */
-function register_global_hook($hook, \Closure $callback)
+function register_global_hook($hook, \Closure $callback): void
 {
     HookStorage::registerGlobal($hook, $callback);
 }
@@ -26,7 +26,7 @@ function register_global_hook($hook, \Closure $callback)
  *
  * @return \Closure[]|\Traversable
  */
-function get_registered_hooks($objectOrClass, $hook)
+function get_registered_hooks($objectOrClass, $hook): \Traversable
 {
     return HookStorage::get($objectOrClass, $hook);
 }

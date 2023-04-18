@@ -1,6 +1,11 @@
 <?php
 namespace Formapro\Values;
 
+@trigger_error('The '.__NAMESPACE__.'\CastTrait class is deprecated. Use corresponding cast classes.', E_USER_DEPRECATED);
+
+/**
+ * @deprecated
+ */
 trait CastTrait
 {
     /**

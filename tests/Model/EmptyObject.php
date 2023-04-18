@@ -1,7 +1,6 @@
 <?php
 namespace Formapro\Values\Tests\Model;
 
-use Formapro\Values\ChangedValuesTrait;
 use Formapro\Values\ObjectsTrait;
 use Formapro\Values\ValuesTrait;
 
@@ -21,10 +20,7 @@ class EmptyObject
         addObject as public;
     }
 
-    use ChangedValuesTrait;
-
     public function __construct()
     {
-        $this->registerChangedValuesHooks();
     }
 }

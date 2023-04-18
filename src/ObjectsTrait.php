@@ -23,51 +23,37 @@ trait ObjectsTrait
     protected $rootObjectKey;
 
     /**
-     * @param string               $key
      * @param string|\Closure|null $classOrClosure
-     *
-     * @return object|null
      */
-    protected function getObject($key, $classOrClosure = null)
+    protected function getObject(string $key, $classOrClosure = null): ?object
     {
         return get_object($this, $key, $classOrClosure);
     }
 
-    /**
-     * @param string      $key
-     * @param object|null $object
-     */
-    protected function setObject($key, $object)
+    protected function setObject(string $key, ?object $object): void
     {
         set_object($this, $key, $object);
     }
 
     /**
-     * @param string   $key
-     * @param object[] $objects
+     * @param object[]|array $objects
      */
-    protected function setObjects($key, $objects)
+    protected function setObjects(string $key, ?array $objects): void
     {
         set_objects($this, $key, $objects);
     }
 
-    /**
-     * @param string $key
-     * @param object $object
-     * @param string|null $objectKey
-     */
-    protected function addObject($key, $object, $objectKey = null)
+    protected function addObject(string $key, object $object, ?string $objectKey = null): void
     {
         add_object($this, $key, $object, $objectKey);
     }
 
     /**
-     * @param string               $key
      * @param string|\Closure|null $classOrClosure
      *
-     * @return \Traversable
+     * @return object[]|\Traversable
      */
-    protected function getObjects($key, $classOrClosure = null)
+    protected function getObjects(string $key, $classOrClosure = null): \Traversable
     {
         return get_objects($this, $key, $classOrClosure);
     }
