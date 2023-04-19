@@ -142,7 +142,7 @@ function get_value(object $object, string $key, $default = null)
  *
  * @return object
  */
-function build_object_ref($classOrCallable = null, array &$values, ?object $context = null, ?string $contextKey = null): object
+function build_object_ref($classOrCallable = null, array &$values = [], ?object $context = null, ?string $contextKey = null): object
 {
     foreach (get_registered_hooks(HooksEnum::BUILD_OBJECT, HooksEnum::GET_OBJECT_CLASS) as $callback) {
         if ($dynamicClassOrCallable = call_user_func($callback, $values, $context, $contextKey, $classOrCallable)) {
@@ -203,7 +203,7 @@ function build_object_ref($classOrCallable = null, array &$values, ?object $cont
  *
  * @return object
  */
-function build_object($classOrCallable = null, array $values): object
+function build_object($classOrCallable = null, array $values = []): object
 {
     return build_object_ref($classOrCallable, $values);
 }
